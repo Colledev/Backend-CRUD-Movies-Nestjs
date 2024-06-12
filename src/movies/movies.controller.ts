@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { Movie } from './movies.entity';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../jwt/jwt-auth.guard';
 import { ApiTags, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
 import { CreateMovieDto } from './dtos/movies.create.dto';
 import { UpdateMovieDto } from './dtos/movies.update.dto';
@@ -36,6 +36,7 @@ export class MoviesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Get(':id')
   @ApiParam({ name: 'id', description: 'The ID of the movie' })
   @ApiResponse({
@@ -49,6 +50,7 @@ export class MoviesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Post()
   @ApiBody({ type: CreateMovieDto })
   @ApiResponse({
@@ -66,6 +68,7 @@ export class MoviesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Put(':id')
   @ApiParam({ name: 'id', description: 'The ID of the movie' })
   @ApiBody({ type: UpdateMovieDto })
@@ -84,6 +87,7 @@ export class MoviesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Delete(':id')
   @ApiParam({ name: 'id', description: 'The ID of the movie' })
   @ApiResponse({

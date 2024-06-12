@@ -15,9 +15,14 @@ services:
 
   redis:
     image: redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
     container_name: redis-challenge
     ports:
       - '6379:6379'
+    volumes:
+      - ./redis-data:/data
 
 volumes:
   postgres-data:
+  redis-data:
