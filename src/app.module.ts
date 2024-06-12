@@ -8,6 +8,7 @@ import { MoviesModule } from './movies/movies.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: '.env',
       isGlobal: true,
     }),
     TypeOrmModule.forRoot({

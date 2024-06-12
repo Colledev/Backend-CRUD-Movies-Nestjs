@@ -12,7 +12,7 @@ async function bootstrap() {
     .setTitle('Movie Catalog API')
     .setDescription('The Movie Catalog API description')
     .setVersion('1.0')
-    .addBearerAuth()
+    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'jwt' })
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
