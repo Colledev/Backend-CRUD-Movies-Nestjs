@@ -1,12 +1,14 @@
 import { Controller, Post, Body, Res, HttpStatus } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { LoginUserDto } from '../users/dtos/users.login.dto';
+import { CreateUserDto } from '../users/dtos/users.create.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  async login(@Body() loginUserDto: any, @Res() res): Promise<any> {
+  async login(@Body() loginUserDto: LoginUserDto, @Res() res): Promise<any> {
     const user = await this.authService.validateUser(
       loginUserDto.username,
       loginUserDto.password,
@@ -21,7 +23,10 @@ export class AuthController {
   }
 
   @Post('register')
-  async register(@Body() createUserDto: any, @Res() res): Promise<any> {
+  async register(
+    @Body() createUserDto: CreateUserDto,
+    @Res() res,
+  ): Promise<any> {
     const user = await this.authService.register(createUserDto);
     if (!user) {
       return res
