@@ -71,3 +71,8 @@ Após iniciar o servidor, a documentação Swagger estará disponível em:
 ```docker
 http://localhost:3000/api
 ```
+
+### Screenshot
+
+![image](https://github.com/Colledev/Movie-Catalog-API-backend/assets/112740912/51c55a09-db8d-49e4-982b-9681991491de)
+
